@@ -1,0 +1,173 @@
+{% extends "shop/base.html" %}
+{% load static%}
+
+{% block content %}
+<body>
+
+	<!--================Home Banner Area =================-->
+	<section class="banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content text-center">
+					<h2>Kategoriya</h2>
+					<div class="page_link">
+						<a href="index.html">
+
+    Əsas Səyfə </a>
+						<a href="category.html">Kategoriya</a>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Home Banner Area =================-->
+
+	<!--================Category Product Area =================-->
+	<section class="cat_product_area section_gap">
+		<div class="container-fluid">
+			<div class="row flex-row-reverse">
+				<div class="col-lg-9">
+					<div class="product_top_bar">
+					
+						<div class="right_page ml-auto">
+							<nav class="cat_page" aria-label="Page navigation example">
+								<ul class="pagination">
+									{% if page_obj.has_previous %}
+																<li class="page-item">
+																<a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a>
+																</li>
+																<li>
+																<a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+																	{{ page_obj.previous_page_number }}
+																</a>
+																</li>
+														{% else %}
+																<li class="page-item disabled">
+																<span class="page-link">Previous</span>
+																</li>
+														{% endif %}
+
+															<li class="page-item active">
+																<span class="page-link">{{ page_obj.number }}</span>
+															</li>
+
+														{% if page_obj.has_next %}
+																<li class="page-item">
+																<a class="page-link" href="?page={{ page_obj.next_page_number }}">
+																	{{ page_obj.next_page_number }}
+																</a>
+																</li>
+																<li class="page-item ">
+																<a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+																</li>
+														{% else %}
+																<li class="page-item disabled">
+																<span class="page-link">Next</span>
+																</li>
+														{% endif %}
+
+								</ul>
+							</nav>
+						</div>
+					</div>
+
+
+
+
+					<div class="latest_product_inner row">
+					 {% for item in page_obj%}
+						<div class="col-lg-3 col-md-3 col-sm-6">
+							<div class="f_p_item">
+								<div class="f_p_img">
+									<a href="#"><img class="card-img-top" src="/media/{{ item.image }}"  width="195.2" height="227.773" alt=""></a>
+									<div class="p_icon">
+										<a href="{% url 'shop:detail' item.slug %}">
+											Haqqında
+										</a>
+									</div>
+								</div>
+								<a href="{% url 'shop:detail' item.slug %}">
+									<h4>{{ item.name }}</h4>
+								</a>
+								<h5>{{ item.price|title }}</h5>
+							</div>
+						</div>	
+					 {% endfor %}
+					</div>
+
+
+				</div>
+				<div class="col-lg-3">
+					<div class="left_sidebar_area">
+						<aside class="left_widgets cat_widgets">
+							<div class="l_w_title">
+								<h3>Kategoriyalar</h3>
+							</div>
+							<div class="widgets_inner">
+								<ul class="list">
+								{% for c in categories %}
+									<li>
+										<a href="{% url 'shop:categories' c.slug %}">{{ c.name }}</a>
+									</li>
+								{% endfor %}
+								</ul>
+							</div>
+						</aside>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<nav class="cat_page mx-auto" aria-label="Page navigation example">
+					<ul class="pagination">
+						
+						{% for num in .paginator.page_range %}
+						{% ifequal num contacts.number %}
+							<span class="current"><b>{{ num }}</b></span>
+						{% else %}
+							<a href="?page={{ num }}"> {{ num }}</a>
+						{% endifequal %} 
+						{% endfor %}
+
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</section>
+	<!--================End Category Product Area =================-->
+
+	<div class="main_title">
+						<h2> Brendlərimiz </h2>
+					</div>
+	<section class="clients_logo_area">
+		<div class="container-fluid">
+			<div class="clients_slider owl-carousel">
+
+			
+			
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test2.jpg' %}" width="198.4" height="70" alt="">
+				</div>
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test3.jpg' %}" width="198.4" height="70" alt="">
+				</div>
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test4.jpg' %}" width="198.4" height="70" alt="">
+				</div>
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test5.png' %}" width="198.4" height="70" alt="">
+				</div>
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test6.jpg' %}" width="198.4" height="70" alt="">
+				</div>
+			
+			</div>
+		</div>
+	</section>
+
+<br>
+<br>
+
+{% endblock %}

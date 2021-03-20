@@ -1,0 +1,134 @@
+
+{% extends "shop/base.html" %}
+{% load static%}
+
+{% block content %}
+
+	<!--================Home Banner Area =================-->
+	<section class="home_banner_area">
+		<div class="overlay"></div>
+		<div class="banner_inner d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content row" >
+					<div class="offset-lg-2 col-lg-8">
+						<h3>GIFA</h3>
+						<br>
+							<h3>Zövqlü insanların məkanı.</h3>
+						
+						<a class="white_bg_btn" href="{% url 'shop:about' %}">Ətraflı Məlumat</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Home Banner Area =================-->
+
+	<!--================Hot Deals Area =================-->
+
+	
+	
+	<!--================End Hot Deals Area =================-->
+
+	
+
+	<!--================Feature Product Area =================-->
+	<section class="feature_product_area section_gap">
+		<div class="main_box">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="main_title">
+						<h2>Son əlavə edilən məhsullar</h2>
+					</div>
+				</div>
+
+
+
+
+				<div class="row">
+				 {% for item in products %}
+					<div class="col col1">
+						<div class="f_p_item">
+							<div class="f_p_img">
+								<a href="{% url 'shop:detail' item.slug %}"><img class="card-img-top" src="/media/{{ item.image }}"  width="195.2" height="227.773" alt=""></a>
+								<div class="p_icon">
+									<a href="{% url 'shop:detail' item.slug %}">
+										Haqqında
+									</a>
+								</div>
+							</div>
+							<a href="#">
+								<h4>{{ item.name|title }}</h4>
+							</a>
+							<h5>{{ item.price|floatformat:"2" }}</h5>
+						</div>
+					</div>
+				 {% endfor %}
+				</div>
+
+				
+			</div>
+		</div>
+	</section>
+	<!--================End Feature Product Area =================-->
+
+
+<section class="hot_deals_area section_gap">
+                <div class="row">
+					<div class="main_title">
+						<h2>Kategoriya</h2>
+						<p></p>
+					</div>
+				</div>
+
+		<div class="container-fluid">
+			<div class="row">
+			 {% for c in categories %}
+				<div class="col col1">
+					<div class="hot_deal_box">
+					<a href=" {% url 'shop:categories' c.slug %} "><img class="card-img-top" src="/media/{{ c.image }}" width="195.2" height="227.773" alt=""></a>
+						<div class="content">
+							<h3>{{ c.name }}</h3>
+						</div>
+						<a class="hot_deal_link" href=" {% url 'shop:categories' c.slug %} "></a>
+					</div>
+				</div>
+               {% endfor %}
+			</div>
+		</div>
+	</section>
+
+<!--================Clients Logo Area =================-->
+
+
+					<div class="main_title">
+						<h2> Brendlərimiz </h2>
+					</div>
+	<section class="clients_logo_area">
+		<div class="container-fluid">
+			<div class="clients_slider owl-carousel">
+
+			
+			
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test2.jpg' %}" width="198.4" height="70" alt="">
+				</div>
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test3.jpg' %}" width="198.4" height="70" alt="">
+				</div>
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test4.jpg' %}" width="198.4" height="70" alt="">
+				</div>
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test5.png' %}" width="198.4" height="70" alt="">
+				</div>
+				<div class="item">
+					<img src="{% static 'img/clients-logo/test6.jpg' %}" width="198.4" height="70" alt="">
+				</div>
+			
+			</div>
+		</div>
+	</section>
+	<!--================End Clients Logo Area =================-->
+<br>
+<br>
+	{% endblock %}

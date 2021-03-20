@@ -1,0 +1,103 @@
+
+{% extends "shop/base.html" %}
+{% load static%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% block content %}
+
+
+	<!--================Home Banner Area =================-->
+	<section class="banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content text-center">
+					<h2>Məhsul</h2>
+					<div class="page_link">
+						<a href="index.html">Əsas Səyfə</a>
+						<a href="category.html">Kateqoriya</a>
+						<a href="single-product.html">Məhsul</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Home Banner Area =================-->
+
+	<!--================Single Product Area =================-->
+	<div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+			
+				<div class="col-lg-6">
+					<div class="s_product_img">
+						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+									<img src="/media/{{ product.image }}" width="60" height="60"  alt="">
+								</li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="1">
+									<img src="/media/{{ product.image1 }}" width="60" height="60"  alt="">
+								</li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="2">
+									<img src="/media/{{ product.image2 }}" width="60" height="60"  alt="">
+								</li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<img class="d-block w-100" src="/media/{{ product.image }}" alt="First slide">
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" src="/media/{{ product.image1 }}" alt="Second slide">
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" src="/media/{{ product.image2 }}" alt="Third slide">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<h3> {{ product.name|title }} </h3>
+						<h2> Code: {{ product.price|title }} </h2>
+						<ul class="list">
+							<li>
+								   <a class="active" href="">
+									<span>Kateqoriya</span> : {{ product.category|title }} </a>
+							</li>
+							
+						</ul>
+						
+						<p>
+						{{ product.description }}</p>
+						
+
+						
+						
+					
+						<h2>Bizimlə Əlaqə Üçün </h2>
+						<div class="card_area">
+							<a class="icon_btn" href="https://www.facebook.com/GIFA-%C4%B0n%C5%9Faat-109607724542494/">
+								<i class="fa fa-facebook"></i>
+							</a>
+
+							<a class="icon_btn" href="https://www.instagram.com/gifa.insaat/">
+								<i class="fa fa-instagram"></i>
+							</a>
+							<a class="icon_btn" href="https://api.whatsapp.com/send?phone=994558904034">
+								<i class="fa fa-whatsapp"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!--================End Single Product Area =================-->
+
+	
+<br>
+<br>
+
+{% endblock %}
